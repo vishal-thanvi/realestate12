@@ -39,9 +39,9 @@ const Testimonial = () => {
                     <div className="container px-5 md:px-32 mx-auto">
                         <h1 className="text-[14px] font-medium title-font text-gray-900">TESTIMONIAL</h1>
                         <h1 className="text-[27px] font-bold title-font text-gray-900 font-serif mb-12 pb-[60px]">What Our Client Say?</h1>
-                        <div className="flex flex-wrap -m-4">
-                            <div className="p-4 md:w-2/3 w-full bg-white border-gray-400">
-                                <div className="h-full shadow-2xl pt-[10px] md:pt-[75px] pl-[75px] pr-[35px] rounded">
+                        <div className="flex flex-wrap">
+                            <div className="p-2 md:w-2/3 w-full bg-white border-gray-400">
+                                <div className="h-full  pt-[10px] md:pt-[30px] pl-[75px] pr-[35px] rounded">
                                     <div className={`transition-transform duration-300 ${animation}`}>
                                         {click && (
                                             <div>
@@ -68,7 +68,7 @@ const Testimonial = () => {
                                             </div>
                                         )}
                                     </div>
-                                    <div className='flex pb-6 gap-3'>
+                                    <div className='flex pb-3 gap-3'>
                                         <button className="flex ml-auto text-gray border-0 py-2 px-4 bg-gray-200 focus:outline-none hover:bg-gray-400 rounded-full">
                                             <img src="./images/white-arrow.png" alt="" className="h-9 rotate-180 w-6" onClick={change2} />
                                         </button>
