@@ -167,7 +167,7 @@ const PropertiesPage = ({ properties }) => {
         </div>
       </div>
 
-      <div className="flex flex-wrap -m-4 mx-2 sm:mx-10 md:mx-[1rem] mt-5">
+      <div className="flex flex-wrap -m-4 mx-2 sm:mx-5 md:mx-[1rem] mt-5">
         {currentProperties.length > 0 ? (
           currentProperties.map((property) => (
             <PropertyCards
