@@ -35,9 +35,9 @@ const Video = () => {
                     </h1>
                     <button className="flex ml-auto">
                         <CommonBtn
-                            px={'px-12px'}
-                            mdpx={'md:px-[40px]'}
-                            mdp={'p-4'}
+                            px={'px-8px md:px-12'}
+                            mdpx={'md:px-[40px] px-[30px]'}
+                            mdp={'p-2 md:p-4'}
                             mdtext={'md:text-[15px]'}
                             name={'CONTACT US'}
                         />
