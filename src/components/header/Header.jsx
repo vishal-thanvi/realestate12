@@ -62,7 +62,7 @@ const Header = () => {
 
         <nav
           className={`${
-            isMenuOpen ? "block" : "hidden"
+            isMenuOpen ? "hidden" : "hidden"
           } md:flex flex-col md:flex-row md:ml-auto items-center text-base justify-center w-full md:w-auto`}
         >
           {navLinks.map(({ href, title }) => (
