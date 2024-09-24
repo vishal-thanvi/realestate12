@@ -44,7 +44,7 @@ const Header = () => {
         </a>
 
         <button
-          className="inline-flex md:hidden ml-auto items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+          className="inline-flex md:hidden ml-auto items-center  border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
           onClick={toggleMenu}
         >
           <svg
@@ -121,8 +121,8 @@ const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-100">
-          <nav className="flex flex-col items-center space-y-2 justify-center text-base pb-10 bg-gray-200">
+        <div className="md:hidden ">
+          <nav className="flex flex-col items-center space-y-2 justify-center text-base pb-10 ">
             {navLinks.map(({ href, title }) => (
               <Link
                 key={href}
