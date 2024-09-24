@@ -12,7 +12,7 @@ const RecentPropertylist = () => {
 
   return (
     <div>
-      <section className="text-gray-600 body-font bg-gray-100 pb-0 md:px-20 px:12">
+      <section className="text-gray-600 body-font bg-gray-100 pb-0 md:px-12 px:12">
         <div className="container px-[20px] md:px-10 py-24 mx-auto">
           <h1 className="text-gray-900 md:text-[48px] text-center pb-10 text-[35px] font-bold font-serif">
             Recent Listed Properties
