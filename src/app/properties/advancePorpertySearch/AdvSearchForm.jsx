@@ -12,6 +12,8 @@ const AdvSearchForm = () => {
   const [maxBeds, setMaxBeds] = useState('');
   const [priceRange, setPriceRange] = useState([0, 180000]); 
   const [filteredProperties, setFilteredProperties] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handlePriceRangeChange = (event, newValue) => {
     setPriceRange(newValue);
@@ -19,32 +21,42 @@ const AdvSearchForm = () => {
 
   const handleFilter = (e) => {
     e.preventDefault();
-    
+    setLoading(true);
+    setErrorMessage('');
+
     const minBedsNumber = Number(minBeds) || 0;
     const maxBedsNumber = Number(maxBeds) || Infinity; 
 
     if (maxBedsNumber < minBedsNumber) {
       alert("Max beds cannot be less than min beds.");
+      setLoading(false);
       return;
     }
-  
-    const filtered = propertiesData.properties.filter(property => {
-      const isWithinPriceRange = property.price >= priceRange[0] && property.price <= priceRange[1];
-      const matchesPropertyType = propertyType ? property.category === propertyType : true;
-      const matchesCity = city ? property.cityName === city : true;
 
-      const matchesArea = area ? (
-        (area === 'small' && property.squareFootage < 5000) ||
-        (area === 'medium' && property.squareFootage >= 5000) 
-      ) : true;
 
-      const matchesMinBeds = property.beds >= minBedsNumber;
-      const matchesMaxBeds = property.beds <= maxBedsNumber;
+    setTimeout(() => {
+      const filtered = propertiesData.properties.filter(property => {
+        const isWithinPriceRange = property.price >= priceRange[0] && property.price <= priceRange[1];
+        const matchesPropertyType = propertyType ? property.category === propertyType : true;
+        const matchesCity = city ? property.cityName === city : true;
 
-      return isWithinPriceRange && matchesPropertyType && matchesCity && matchesArea && matchesMinBeds && matchesMaxBeds;
-    });
-  
-    setFilteredProperties(filtered);
+        const matchesArea = area ? (
+          (area === 'small' && property.squareFootage < 5000) ||
+          (area === 'medium' && property.squareFootage >= 5000) 
+        ) : true;
+
+        const matchesMinBeds = property.beds >= minBedsNumber;
+        const matchesMaxBeds = property.beds <= maxBedsNumber;
+
+        return isWithinPriceRange && matchesPropertyType && matchesCity && matchesArea && matchesMinBeds && matchesMaxBeds;
+      });
+
+      setFilteredProperties(filtered);
+      setLoading(false);
+      if (filtered.length === 0) {
+        setErrorMessage('No properties found matching your criteria.');
+      }
+    }, 500); 
   };
   
   const propertiesToShow = filteredProperties.length > 0 ? filteredProperties : propertiesData.properties;
@@ -144,11 +156,16 @@ const AdvSearchForm = () => {
               type="submit"
               className="w-full bg-indigo-600 font-medium text-[15px] text-white py-3 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
-              SEARCH PROPERTIES
+              {loading ? 'Loading...' : 'SEARCH PROPERTIES'}
             </button>
           </div>
         </div>
       </form>
+      
+   
+      {loading && <div className="text-center py-4">Loading properties, please wait...</div>}
+      {errorMessage && <div className="text-center py-4 text-red-500">{errorMessage}</div>}
+      
       <div className='bg-white'>
         <PropertiesPage properties={propertiesToShow} />
       </div>
