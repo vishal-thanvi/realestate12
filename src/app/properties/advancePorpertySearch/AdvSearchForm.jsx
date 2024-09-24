@@ -23,7 +23,6 @@ const AdvSearchForm = () => {
     const minBedsNumber = Number(minBeds) || 0;
     const maxBedsNumber = Number(maxBeds) || Infinity; 
 
-   
     if (maxBedsNumber < minBedsNumber) {
       alert("Max beds cannot be less than min beds.");
       return;
@@ -33,16 +32,15 @@ const AdvSearchForm = () => {
       const isWithinPriceRange = property.price >= priceRange[0] && property.price <= priceRange[1];
       const matchesPropertyType = propertyType ? property.category === propertyType : true;
       const matchesCity = city ? property.cityName === city : true;
-      
-      
+
       const matchesArea = area ? (
         (area === 'small' && property.squareFootage < 5000) ||
         (area === 'medium' && property.squareFootage >= 5000) 
       ) : true;
-  
+
       const matchesMinBeds = property.beds >= minBedsNumber;
       const matchesMaxBeds = property.beds <= maxBedsNumber;
-  
+
       return isWithinPriceRange && matchesPropertyType && matchesCity && matchesArea && matchesMinBeds && matchesMaxBeds;
     });
   
@@ -53,7 +51,7 @@ const AdvSearchForm = () => {
 
   return (
     <div className='bg-blue-200'>
-      <form className="container mx-auto px-32 py-8 p-6" onSubmit={handleFilter}>
+      <form className="container mx-auto px-4 sm:px-6 lg:px-20 py-8" onSubmit={handleFilter}>
         <h2 className="text-xl font-bold mb-4">Advanced Search</h2>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 mb-4">
@@ -79,7 +77,6 @@ const AdvSearchForm = () => {
             className="mt-1 block w-full border-gray-300 px-4 py-4 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           >
             <option value="">Cities</option>
-            {/* Add more city options as needed */}
             <option value="New York">New York</option>
             <option value="Los Angeles">Los Angeles</option>
             <option value="Chicago">Chicago</option>
@@ -137,7 +134,7 @@ const AdvSearchForm = () => {
           </select>
 
           {/* Price Range */}
-          <div className="md:col-span-2 lg:col-span-2 mt-1 w-1/2 lg:w-full md:w-full">
+          <div className="md:col-span-2 lg:col-span-2">
             <RangeSlider value={priceRange} onChange={handlePriceRangeChange} />
           </div>
 
@@ -145,7 +142,7 @@ const AdvSearchForm = () => {
           <div className="md:col-span-2 lg:col-span-1">
             <button
               type="submit"
-              className="w-full bg-indigo-600 font-medium text-[15px] text-white py-3 px- rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="w-full bg-indigo-600 font-medium text-[15px] text-white py-3 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               SEARCH PROPERTIES
             </button>
