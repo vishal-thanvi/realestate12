@@ -2,7 +2,7 @@ import React from "react";
 
 const OurWorkOverview = () => {
   const sectionStyle = {
-    backgroundImage: "url('/images/img-3.png')",
+    backgroundImage: 'url("/images/img-3.png")',
 
     backgroundRepeat: "no-repeat",
     overflow: "hidden",
